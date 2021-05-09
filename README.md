@@ -1,2 +1,1 @@
-# my phd dissertation 
-## [@ princeton, 2021]
+### my phd dissertation [@ princeton, 2021]
