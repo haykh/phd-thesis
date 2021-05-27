@@ -4,6 +4,10 @@
 % Modify the following line to match your school
 % Available options include `Harvard`, `Princeton`, and `NYU`.
 \documentclass[School=Princeton]{Dissertate}
+\usepackage{amsmath,bm,multicol,xcolor,esint}
+\usepackage[export]{adjustbox}
+
+\newcommand{\REF}{{\color{red}[REF]}}
 
 \begin{document}
 
@@ -18,7 +22,8 @@
 \dedicationpage
 \acknowledgments
 
-\doublespacing
+%\doublespacing
+\singlespacing
 
 % include each chapter...
 \setcounter{chapter}{-1}  % start chapter numbering at 0
