@@ -66,19 +66,19 @@ In PIC algorithm \REF~instead of discretizing the phase space, the distribution 
   \label{eq:pic-df}
   f_s^{(n)}(\bm{r},\bm{v}) = \sum_p w_{s,p}S\left(\bm{r} - \bm{r}_{s,p}^{(n)}\right)\delta\left(\bm{v}-\bm{v}_{s,p}^{(n)}\right),
 \end{equation}
-\noindent where $\bm{r}_{s,p}^{(n)}$ and $\bm{v}_{s,p}^{(n)}$ are the coordinate and the velocity of the $p$-th macro-particle of species $s$, while $w_{s,p}$ is the effective weight. Function $S$ ... Here and further in this text I will be using the terms ``macro-particle" and ``particle" interchangebly in the context of numerical simulations.
+\noindent where $\bm{r}_{s,p}^{(n)}$ and $\bm{v}_{s,p}^{(n)}$ are the coordinate and the velocity of the $p$-th macro-particle of species $s$, while $w_{s,p}$ is the effective weight. Function $S$, which describes smearing of each individual particle, is called \emph{the shape function}. Here and further in this text I will be using the terms ``macro-particle" and ``particle" interchangebly in the context of numerical simulations.
 
-Electric and magnetic fields, on their turn, are discretized spatially -- $\bm{E}_{i,j,k}^{(n)}$ and $\bm{B}_{i,j,k}^{(n)}$ -- where $i,j,k$ is the three-dimensional index of the corresponding node in the discretized space. In practice, for the computational purposes, it is convenient to define the discretized values of the electromagnetic field components at different locations with respect to the corresponding node $(i,j,k)$. This is the so-called \emph{Yee-mesh configuration}, shown in figure~\ref{fig:ch1-yee} \REF. In this case, for example, $E_{x;~i,j,k}$ corresponds spatially to $E_{x;~i+1/2,j,k}$, however for brevity we typically omit the extra $1/2$ in the index.\footnote{A simple explanation behind this non-trivial convention is that in the integrated form Maxwell's equations operate in terms of the contour integrals of the electric field, $\oint\bm{E}\mathrm{d}\bm{l}$, and the fluxes of the magnetic field, $\oiint \bm{B}\mathrm{d}\bm{s}$. When solving these equations in the discretized space with the Yee-mesh configuration, both of these quantities can be trivially computed from the corresponding field components shown in figure~\ref{fig:ch1-yee} at the boundaries of the computational cell without interpolation.}
+Electric and magnetic fields, on their turn, are discretized spatially -- $\bm{E}_{i,j,k}^{(n)}$ and $\bm{B}_{i,j,k}^{(n)}$ -- where $i,j,k$ is the three-dimensional index of the corresponding node in the discretized space.\footnote{In practice, for the computational purposes, it is convenient to define the discretized values of the electromagnetic field components at different locations with respect to the corresponding node $(i,j,k)$. This is the so-called \emph{Yee-mesh configuration} \REF. In this case, for instance, $E_{x;~i,j,k}$ corresponds spatially to $E_{x;~i+1/2,j,k}$, however for brevity we typically omit the extra $1/2$ in the index. A simple explanation behind this non-trivial convention is that in the integrated form Maxwell's equations operate in terms of the contour integrals of the electric field, $\oint\bm{E}\mathrm{d}\bm{l}$, and the fluxes of the magnetic field, $\oiint \bm{B}\mathrm{d}\bm{s}$. When solving these equations in the discretized space with the Yee-mesh configuration, both of these quantities can be trivially computed from the corresponding staggered field components at the boundaries of the computational cell without interpolation.} \DRAFT{A detailed discussion is diverted to dedicated literature. Here i will just outline the key steps of the algorithm that will be important in the further discussion.}
 
-\begin{figure}
-\includegraphics[trim=50 250 20 250,clip,width=\textwidth]{figures/ch1-yee-mesh}
-\caption[Yee mesh.]{Yee lattice configuration for the discretization of the electromagnetic field components.
-\label{fig:ch1-yee}}
-\end{figure}
+%\begin{figure}
+  %\centering
+  %\includegraphics[trim=720 250 20 250,clip,width=0.7\textwidth]{figures/ch1-yee-mesh}
+  %\caption[Yee mesh.]{Yee lattice configuration for the discretization of the electromagnetic field components. \label{fig:ch1-yee}}
+%\end{figure}
 
 
 
-  \section{Highly magnetized (guiding center) approximation}
+\section{Highly magnetized (guiding center) approximation}
 
   %\newthought{There's something to be said} for having a good opening line. Morbi commodo, ipsum sed pharetra gravida, orci  $x = 1/\alpha$ magna rhoncus neque, id pulvinar odio lorem non turpis \cite{Eigen1971, Knuth1968}. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
   %$$\zeta = \frac{1039}{\pi}$$
