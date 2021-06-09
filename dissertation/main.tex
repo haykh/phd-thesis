@@ -6,6 +6,32 @@
 \documentclass[School=Princeton]{Dissertate}
 \usepackage{amsmath,bm,multicol,xcolor,esint}
 \usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    float/.style={
+           font=\footnotesize,
+           text width=12em,
+           },
+    box/.style={
+           font=\small,
+           rectangle,
+           rounded corners,
+           draw=black, thin,
+           text width=16em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    every arrow quotes/.style = {font=\footnotesize, align=center, inner sep=1pt},
+    arrow/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
 
 \newcommand{\REF}{{\color{red}[REF]}}
 \newcommand{\DRAFT}[1]{{\color{red}#1}}
