@@ -24,7 +24,7 @@ In this paper, we expand on the work of PS18 by investigating in detail the seco
 \label{sec:reconnection-qualitative}
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig1.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig1.pdf}
     \caption{Snapshots showing the temporal evolution of the current sheet from a simulation with the magnetization of the background (upstream) plasma of $\sigma_{\rm up}=100$. Color represents the plasma mass density $\rho$, in units of the mass density in the upstream region $\rho_{\rm up}$, in logarithmic scale (see color bar). We only show the region $|x| / r_L < 60$ to emphasize the small-scale structures in the reconnection layer, while the actual simulation box spans from $-200\, r_L$ to $200 \, r_L$ in the $x$-direction.  The plasmoid used in our subsequent analysis (see Section~\ref{sec:reconnection-plasmoids}) is highlighted with a solid white rectangle. Dashed white rectangles track the collision of two primary plasmoids (at $ct/r_L\sim322$) from the pre-merger ($ct/r_L=247$) to the post-merger ($ct/r_L=398$) phases. In the first and last panels we also overplot the magnetic field lines for reference. Here we used as our unit of length the Larmor radius $r_L$ of particles with energy $\sigma_{\rm up} m_e c^2$ (for the exact expression, see Equation~\eqref{eq:rL}).}
     \label{fig:rec-evolution}
 \end{figure}
@@ -73,7 +73,7 @@ Assuming that at $t=t_0$ the volume is empty (i.e., $f(t_0,\gamma)=0$), and usin
 \end{equation}
 
 \begin{figure}[tb]
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig2.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig2.pdf}
     \caption{Temporal evolution of the particle distribution function, $f(t, \gamma)$ (see color bar), as obtained by numerically solving Equation~\eqref{eq:fsolution} with monoenergetic (panel (a)) or power law with $\gamma_{\min} \ll \gamma_{\max}$ (panel (b)) distribution functions at injection, $S$ (shown in black). In both panels, the magnetic field grows linearly with time, while the particle injection rate is assumed to be constant. All distribution functions are normalized, so that $\int f(\gamma)d\gamma = 1$. }
     \label{fig:rec-theory}
 \end{figure}
@@ -156,7 +156,7 @@ Henceforth, we adopt $r_{L}$ as our length unit, and we quote times normalized t
 
 \begin{figure}[htb]
 \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-    \includegraphics[width=0.95\linewidth]{dissertation/figures/ch2-reconnection/fig3.pdf}}
+    \includegraphics[width=0.95\linewidth]{figures/ch2-reconnection/fig3.pdf}}
     {
         \caption{Close-up view of a representative isolated primary plasmoid from the simulation with $\sups=100$ at time $ct/r_L=391$; this plasmoid is indicated in Figure~\ref{fig:rec-evolution} by a white solid rectangle. Color in the middle panel represents the plasma density $\rho$, in units of the upstream plasma density $\rho_{\rm up}$, in logarithmic scale (same color-coding as in Figure~\ref{fig:rec-evolution}). Three characteristic radii are also marked on the plot: $\rups$ indicates the boundary of the {\it plasmoid corona} (i.e., where the plasmoid ends and the upstream begins); $r_0$ shows the outer boundary of the {\it plasmoid shell}, where the local force balance condition is satisfied; and $\rins$ indicates the plasmoid core that contains hot unmagnetized plasma from the initial current sheet. Four peripheral panels show the radial profiles of (a) the magnetization, (b) mean Lorentz factor, (c) plasma density in units of its upstream value, and (d) magnetic field in units of its upstream value, computed along a transverse stripe passing through the plasmoid center (see horizontal dashed white lines in middle panel). In all peripheral panels, vertical lines indicate the characteristic radii marked in the middle plot. Two horizontal lines in the top left panel indicate the upstream magnetization, $\sups \gg 1$, and the effective magnetization of the plasmoid shell, $\sigma_0 \approx 1$. All plots share the same $x$-axes.}
         \label{fig:rec-plasm_example}
@@ -241,7 +241,7 @@ Summarizing, the key result of this section is that the structure and evolution 
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig4.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig4.pdf}
     \caption{Particle distribution functions, $f(\gamma)$, compensated by $\gamma$, from  the $\sigma_{\rm up}=10$ (panel (a)) and $\sigma_{\rm up}=100$ (panel (b)) simulations. The time-averaged injection spectra are shown with a red line, while the variation of injected distribution over time is illustrated by the transparent red band. For panel (a) the averaging period is $1300<ct/r_L<2000$, and for panel (b) it is $420 < ct/r_L < 620$. Black solid lines show the distribution function of all the particles in the plasmoid, while the thick gray line represents the distribution function of all the particles in the simulation domain; both of these lines are computed at the end of the quoted time period. For comparison purposes, all distribution functions are normalized so that $\int f(\gamma)d\gamma=1$. In these plots it is evident that the distribution function of the plasmoid as a whole (black line) extends farther than the distribution of the injected particles (red line).}
     \label{fig:rec-injspec}
 \end{figure}
@@ -259,7 +259,7 @@ Identifying the process that energizes particles after their injection into plas
 \subsubsection{Particle evolution in the plasmoid shell}
 \label{sec:part-evol}
 \begin{figure}[htb]
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig5.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig5.pdf}
     \caption{
         Snapshots from the $\sups=100$ simulation focused on the same primary plasmoid highlighted in Figure~\ref{fig:rec-evolution} with solid lines. The plasmoid boundary is highlighted with a solid red line. Gray lines are the isocontours of the magnetic vector potential, $A_z$. A population of $\sim 10^4$ particles (shown in blue) is initially frozen to a magnetic field line (see top left panel). The particles enter the plasmoid roughly at the same time ($239 < ct/r_L < 299$) and are later carried toward the center of the plasmoid. An animation showing the evolution of various physical quantities for the same particle population can be found at the following link: \url{https://youtu.be/UJsjoIieLm0}. 
     }
@@ -283,7 +283,7 @@ where we assumed $\xi\approx 1$ and $\zeta\approx 2/3$ to derive the second scal
 
 
 \begin{figure}[tb]
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig6.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig6.pdf}
     \caption{Temporal evolution of the distance from the plasmoid center, $\Rlg$ (panel (a)), and the magnetic field strength at the particle location, $\Blg$ (panel (b)), for the generation of particles shown in Figure~\ref{fig:rec-layerevol} in blue. Colored bands represent the spread in values within the particle population, while the solid lines show the median value. In panel (a) we also show the evolution of the plasmoid size, $\rups$, as a function of time; the spread, in this case, originates from the fact that the outer boundary of this plasmoid is actually elliptical. The vertical dashed line indicates the time when particles enter the plasmoid, and the gray band at $350<ct/r_L<600$ corresponds to the time when particles are within the contracting shell while the plasmoid remains isolated. As particles spiral down toward the center of the plasmoid ($\Rlg(t)$), the plasmoid itself grows ($r_{\rm up}(t)$), and the magnetic field strength that particles experience grows with time ($\Blg(t)$). At $ct/r_L\sim 600$ the ring of particles reaches the unmagnetized inner core of the plasmoid, where the MHD balance condition we discussed no longer holds, which is why the growth in $\Blg$ halts.}
     \label{fig:rec-layer_r_b}
 \end{figure}
@@ -309,7 +309,7 @@ where $u_{\parallel}$ and $u_\perp$ are the parallel and perpendicular component
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig7.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig7.pdf}
     \caption{(a)
     Temporal evolution of the particle Lorentz factor $\langle\gamma\rangle$, and the Lorentz factor of the particle motion perpendicular ($\langle\gamma_\perp\rangle$), and parallel ($\langle\gamma_{\parallel}\rangle$) to the magnetic field (see inset legend), averaged over the particle population identified in Figure~\ref{fig:rec-layerevol}. The dashed colored line shows the evolution of the cutoff Lorentz factor of the particle energy spectrum, computed as described in Section~\ref{sec:reconnection-conserv_ad_inv}. (b) Temporal evolution of the population averaged adiabatic invariants $\mu$ and $J_\parallel$ (defined in Equations (\ref{eq:mu}) and (\ref{eq:Jpar}), respectively) for the same population of particles as in panel (a). $\langle\mu\rangle$ is normalized to $m_e \sups^2 c^2/2B_{\rm up}$, i.e., the magnetic moment of particles with $\gamma_\perp\sim \sups$ in the upstream field $B_{\rm up}$; $\langle J_\parallel\rangle$, on the other hand, is normalized to $\sups r_L$, i.e., the mirror invariant for a particle with $\gamma_\parallel\sim\sups$ trapped in a circular region of radius $r_L$. These quantities share the same $x$-axis with different $y$-axes on the left and right highlighted with corresponding colors; dotted horizontal lines indicate their average values after $ct/r_L=300$.
     In both panels, the gray dashed vertical line shows the moment when particles enter the plasmoid, and the gray band $350<ct/r_L<600$ corresponds to the time when particles are within the contracting shell while the plasmoid remains isolated. As wee see from panel (a), both the parallel and the perpendicular components of particle momenta grow with time. Since particles are well magnetized within the plasmoid shell ($ct/r_L>300$), this energization is caused by the conservation of adiabatic invariants shown in panel (b).}
@@ -368,8 +368,8 @@ Let us also check that the particles can indeed be confined within the plasmoid 
 \subsubsection{Comparison to analytical model}
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig8_1.pdf}
-    \includegraphics[width=\textwidth]{dissertation/figures/ch2-reconnection/fig8_2.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig8_1.pdf}
+    \includegraphics[width=\textwidth]{figures/ch2-reconnection/fig8_2.pdf}
     \caption{(a, c) Contours of the magnetic vector potential, $A_z$, are shown with colored lines. Rings with $A_z^0 < A_z < A_z^i$ are marked using colored sectors to guide the eye. Contours are overlaid on the plasma density shown in gray from our $\sups=10$ (top) and $100$ (bottom) simulations. The white line indicates the plasmoid boundary $A_z^0$. (b, d) Distribution functions (in perpendicular direction to the magnetic field, $f(\gamma_\perp)$) of particles belonging to different rings; blue curves correspond to the outermost region, while yellow/red curves are for the entire plasmoid (except for the innermost core). Colored vertical dashes represent the corresponding cutoff energies, computed as described in Section~\ref{sec:reconnection-conserv_ad_inv}. Distribution functions are computed for the whole ring defined by $A_z^0 < A_z < A_z^i$.}
     \label{fig:rec-layers_df}
 \end{figure}
