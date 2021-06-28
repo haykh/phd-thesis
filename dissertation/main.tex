@@ -7,6 +7,21 @@
 \usepackage{amsmath,bm,multicol,xcolor,esint}
 \usepackage[export]{adjustbox}
 \usepackage{tikz}
+\usepackage{aasmacros}
+
+\newcommand{\sidebysidecaption}[4]{%
+\RaggedRight%
+  \begin{minipage}[t]{#1}
+    \vspace*{0pt}
+    #3
+  \end{minipage}
+  \hfill%
+  \begin{minipage}[t]{#2}
+    \vspace*{0pt}
+    #4
+\end{minipage}%
+}
+
 \usetikzlibrary{arrows,positioning}
 \tikzset{
     %Define standard arrow tip
