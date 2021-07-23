@@ -45,6 +45,7 @@ Given this pre-accelerated energy spectrum, we aim to study the long-term energy
 
 \subsection{An analytical model for particle energization in plasmoids}
 \label{sec:reconnection-analytics}
+
 In order to highlight the main mechanisms at work, we build an analytical model for the long-term particle energization within a constantly compressing plasmoid. 
 
 Motivated by our simulation results (see Sections \ref{sec:reconnection-plasmoids} and \ref{subsec:reconnection-particles_in_plasmoids}) we assume that the magnetic field lines in the plasmoid interior can be described as concentric rings (see also last panel of Figure~\ref{fig:rec-evolution}). The radius of each ring is decreasing with time, while its magnetic field strength is increasing as a result of plasmoid compression. Particles within plasmoids are typically strongly magnetized (i.e., their gyroradius is much smaller than the plasmoid size), and their motion is confined to the concentric shrinking magnetic rings. Particles injected into the plasmoid roughly at the same time are tied to a single ring and experience an increasing magnetic field strength in time.
@@ -157,12 +158,12 @@ Henceforth, we adopt $r_{L}$ as our length unit, and we quote times normalized t
 \label{sec:reconnection-plasmoids}
 
 \begin{figure}[htb]
-\sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-    \includegraphics[width=0.95\linewidth]{figures/ch2-reconnection/fig3.pdf}}
-    {
+    \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
+        \includegraphics[width=0.95\linewidth]{figures/ch2-reconnection/fig3.pdf}
+    }{
         \caption{Close-up view of a representative isolated primary plasmoid from the simulation with $\sups=100$ at time $ct/r_L=391$; this plasmoid is indicated in Figure~\ref{fig:rec-evolution} by a white solid rectangle. Color in the middle panel represents the plasma density $\rho$, in units of the upstream plasma density $\rho_{\rm up}$, in logarithmic scale (same color-coding as in Figure~\ref{fig:rec-evolution}). Three characteristic radii are also marked on the plot: $\rups$ indicates the boundary of the {\it plasmoid corona} (i.e., where the plasmoid ends and the upstream begins); $r_0$ shows the outer boundary of the {\it plasmoid shell}, where the local force balance condition is satisfied; and $\rins$ indicates the plasmoid core that contains hot unmagnetized plasma from the initial current sheet. Four peripheral panels show the radial profiles of (a) the magnetization, (b) mean Lorentz factor, (c) plasma density in units of its upstream value, and (d) magnetic field in units of its upstream value, computed along a transverse stripe passing through the plasmoid center (see horizontal dashed white lines in middle panel). In all peripheral panels, vertical lines indicate the characteristic radii marked in the middle plot. Two horizontal lines in the top left panel indicate the upstream magnetization, $\sups \gg 1$, and the effective magnetization of the plasmoid shell, $\sigma_0 \approx 1$. All plots share the same $x$-axes.}
         \label{fig:rec-plasm_example}
-        }
+    }
 \end{figure}
 
 As we have postulated in Section~\ref{sec:reconnection-analytics}, plasmoids can be thought of as compressing regions with a constantly amplifying magnetic field. They continuously accrete particles from the upstream plasma and the reconnected plasma outflows. In this section, we will study the structure of plasmoids and the plasmoid compression rate and explore the factors that determine these plasmoid properties. 
