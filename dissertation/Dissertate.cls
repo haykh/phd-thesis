@@ -88,8 +88,7 @@
 								figurewithin=chapter,
 								tablewithin=chapter]{caption}
 
-%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand*{\thefootnote}{[\arabic{footnote}]}
 
 %\onehalfspacing
 %\doublespacing
