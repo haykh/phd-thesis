@@ -5,7 +5,7 @@
 
 \chapter{{\it Overture}: on numerical techniques}
 
-\newthought{Matter around compact astrophysical objects} is typically fully ionized owing to characteristic temperatures far exceeding the atomic binding energies. As a result, the dynamics of such matter is vitally governed by the interplay between the charged particles and the electromagnetic field. 
+\newthought{Matter around compact astrophysical objects} is typically fully ionized owing to characteristic temperatures far exceeding the atomic binding energies. As a result, the dynamics of such matter is vitally governed by the interplay between the charged particles and the electromagnetic field.
 
 Complete mathematical description of such system requires consideration of the Boltzmann equation \REF,
 
@@ -13,7 +13,7 @@ Complete mathematical description of such system requires consideration of the B
   \label{eq:vlasov-maxwell-boltzmann}
   \frac{\partial f_s}{\partial t} + \bm{v} \nabla f_s - \frac{q_s}{m_s}\left(\bm{E}+\frac{\bm{v}}{c}\times\bm{B}\right)\frac{\partial f_s}{\partial \bm{v}} = \left(\frac{\partial f_s}{\partial t}\right)_{\rm col},
 \end{equation}
-a time-dependent kinetic equation on the distribution functions of charged particles $f_s(t;\bm{r},\bm{v})$ for a given species $s$. The right-hand-side of this equation is called the Landau collision integral; it describes the evolution of a distribution function due to close encounters of charged particles with each other -- a process also referred to as \emph{Coulomb collisions}. While individual Coulomb collisions occur via electromagnetic interaction and are technically accounted for in the left-hand-side of the equation~\eqref{eq:vlasov-maxwell-boltzmann}, it is useful to distinguish the former from long-range electromagnetic interactions. Then $\bm{E}$ and $\bm{B}$ represent self-consistent electric and magnetic fields created by both the external sources and the collective motion of charged particles of our system. 
+a time-dependent kinetic equation on the distribution functions of charged particles $f_s(t;\bm{r},\bm{v})$ for a given species $s$. The right-hand-side of this equation is called the Landau collision integral; it describes the evolution of a distribution function due to close encounters of charged particles with each other -- a process also referred to as \emph{Coulomb collisions}. While individual Coulomb collisions occur via electromagnetic interaction and are technically accounted for in the left-hand-side of the equation~\eqref{eq:vlasov-maxwell-boltzmann}, it is useful to distinguish the former from long-range electromagnetic interactions. Then $\bm{E}$ and $\bm{B}$ represent self-consistent electric and magnetic fields created by both the external sources and the collective motion of charged particles of our system.
 
 In practice, for magnetized plasmas around compact objects Coulomb collisions occur at much longer timescales than, e.g., particle gyration or acceleration. Such plasma is often called \emph{collisionless}. Because of this the right-hand-side of~\eqref{eq:vlasov-maxwell-boltzmann} is often neglected, and the equation is called \emph{Vlasov equation} \REF.
 
@@ -87,9 +87,9 @@ Electric and magnetic fields, on their turn, are discretized spatially -- $\bm{E
   \label{eq:lorentz-force}
   \bm{F}_{s,p} = q_s \left(\bm{E}(\bm{r}_{s,p}) + \frac{\bm{v}_{s,p}}{c}\times \bm{B}(\bm{r}_{s,p})\right),
 \end{equation}
-\noindent which is then used in the equations of motion for each individual particle~\eqref{eq:eom}, thus closing the algorithm loop.\footnote{Notice that to compute the value for the electric or magnetic field at the position of the particle in~\eqref{eq:lorentz-force}, or to compute the contribution of each individual particle to the discretized current density, interpolation and extrapolation algorithms are typically used which employ the particle shape function, defined in~\eqref{eq:pic-df}.} 
+\noindent which is then used in the equations of motion for each individual particle~\eqref{eq:eom}, thus closing the algorithm loop.\footnote{Notice that to compute the value for the electric or magnetic field at the position of the particle in~\eqref{eq:lorentz-force}, or to compute the contribution of each individual particle to the discretized current density, interpolation and extrapolation algorithms are typically used which employ the particle shape function, defined in~\eqref{eq:pic-df}.}
 
-To summarize, the key steps of the particle-in-cell algorithm are shown in figure~\ref{fig:pic-steps}. On top of what has already been discussed, we also use a gaussian current filtering \REF (shown as substep (5) in figure~\ref{fig:pic-steps}) to mitigate noise due to the finite number of macroparticles per simulation cell. Typically a \emph{leapfrog time-integration algorithm} is chosen to advance particle positions and velocities (as well as electric and magnetic field components). This ensures the second-order accuracy in time \REF. However, this also means that the coordinates and velocities of each individual particle (as well as $\bm{E}$ and $\bm{B}$ field components) are staggered in time by half timestep (hence the ``${(n-1/2)}$'' index for velocities and magnetic field components). It is also convenient to define the discretized values of the electromagnetic field components at different locations with respect to the corresponding node $(i,j,k)$. This is the so-called \emph{Yee-mesh configuration} \REF. In this case, for instance, $E_{x;~i,j,k}$ corresponds spatially to $E_{x;~i+1/2,j,k}$ (staggered by half cell in the $+x$ direction), however for brevity we typically omit the extra $1/2$ in the index.\footnote{A simple explanation behind this non-trivial convention is that in the integrated form Maxwell's equations operate in terms of the contour integrals of the electric field, $\oint\bm{E}\mathrm{d}\bm{l}$, and the fluxes of the magnetic field, $\oiint \bm{B}\mathrm{d}\bm{s}$. When solving these equations in the discretized space with the Yee-mesh configuration, both of these quantities can be trivially computed from the corresponding staggered field components at the boundaries of the computational cell without interpolation.} 
+To summarize, the key steps of the particle-in-cell algorithm are shown in figure~\ref{fig:pic-steps}. On top of what has already been discussed, we also use a gaussian current filtering \REF (shown as substep (5) in figure~\ref{fig:pic-steps}) to mitigate noise due to the finite number of macroparticles per simulation cell. Typically a \emph{leapfrog time-integration algorithm} is chosen to advance particle positions and velocities (as well as electric and magnetic field components). This ensures the second-order accuracy in time \REF. However, this also means that the coordinates and velocities of each individual particle (as well as $\bm{E}$ and $\bm{B}$ field components) are staggered in time by half timestep (hence the ``${(n-1/2)}$'' index for velocities and magnetic field components). It is also convenient to define the discretized values of the electromagnetic field components at different locations with respect to the corresponding node $(i,j,k)$. This is the so-called \emph{Yee-mesh configuration} \REF. In this case, for instance, $E_{x;~i,j,k}$ corresponds spatially to $E_{x;~i+1/2,j,k}$ (staggered by half cell in the $+x$ direction), however for brevity we typically omit the extra $1/2$ in the index.\footnote{A simple explanation behind this non-trivial convention is that in the integrated form Maxwell's equations operate in terms of the contour integrals of the electric field, $\oint\bm{E}\mathrm{d}\bm{l}$, and the fluxes of the magnetic field, $\oiint \bm{B}\mathrm{d}\bm{s}$. When solving these equations in the discretized space with the Yee-mesh configuration, both of these quantities can be trivially computed from the corresponding staggered field components at the boundaries of the computational cell without interpolation.}
 
 As a result, figure~\ref{fig:pic-steps} represents the full set of discretized equations, sometimes referred to as the electromagnetic PIC algorithm, that approximate the solution of the system of hyperbolic equations \eqref{eq:vlasov-maxwell-boltzmann}, \eqref{eq:faraday-law}, and \eqref{eq:ampere-law} coupled via closure \eqref{eq:current-density}. As it was mentioned above, this numerical solution is second-order accurate in time, and converges to analytic solution as long as the timestep is short: $c\Delta t<0.5\Delta x$ ($\Delta x$ is the size of the cell which is typically the same in all dimensions). This is also called a \emph{Courant–Friedrichs–Lewy condition}. Notice also, that these equations locally preserve the charge and $\nabla\cdot\bm{B}$, as well as the spatial components of the total four-momentum (computed for fields and particles). However, due to its explicit nature, the total energy is only conserved up to second order in $\Delta t$.
 
@@ -97,13 +97,13 @@ As a result, figure~\ref{fig:pic-steps} represents the full set of discretized e
   \centering
 \begin{tikzpicture}[node distance=1cm, auto,]
   \node[box,xshift=2cm] (1) {
-      (1) Faraday's law (first half-step): 
+      (1) Faraday's law (first half-step):
       \begin{equation*}
         \bm{B}^{(n)} = \bm{B}^{(n-1/2)} -c\nabla\times\bm{E}^{(n)}\frac{\Delta t}{2}.
       \end{equation*}
     };
   \node[box,below right=of 1,xshift=-2cm,yshift=-2cm] (3) {
-      (3) Particle EOM integration: 
+      (3) Particle EOM integration:
       \begin{equation*}
       \begin{aligned}
         \bm{u}_{s,p}^{(n+1/2)} = \bm{u}_{s,p}^{(n-1/2)} + \Delta t \bm{F}_{s,p}/m_s,\\
@@ -112,42 +112,42 @@ As a result, figure~\ref{fig:pic-steps} represents the full set of discretized e
       \end{equation*}
     };
   \node[box,below=of 3,yshift=-2cm,xshift=-2cm] (4) {
-      (4) Current deposition: 
+      (4) Current deposition:
       \begin{equation*}
         \bm{r}_{s,p}^{(n+1)}, \bm{v}_{s,p}^{(n+1/2)}\rightarrow \bm{j}^{(n+1/2)}_{i,j,k}.
       \end{equation*}
     };
   \node[box,above left=of 4,yshift=0.5cm,xshift=2cm] (6) {
-      (6) Faraday's law (second half-step): 
+      (6) Faraday's law (second half-step):
       \begin{equation*}
         \bm{B}^{(n+1/2)} = \bm{B}^{(n)} - c\nabla\times \bm{E}^{(n)}\frac{\Delta t}{2}.
       \end{equation*}
     };
   \node[box,above=of 6] (7) {
-      (7) Ampere's law: 
+      (7) Ampere's law:
       \begin{multline*}
         \bm{E}^{(n+1)} = \bm{E}^{(n)} + c\nabla\times \bm{B}^{(n+1/2)}\Delta t \\- 4\pi \tilde{\bm{j}}^{(n+1/2)}\Delta t.
       \end{multline*}
     };
-  \draw[arrow] (1) to[bend left=20] 
+  \draw[arrow] (1) to[bend left=20]
     node [float,midway,align=left,yshift=-0.3cm,xshift=0cm] {
       (2) Interpolation of the Lorentz force onto particles: \\
       $\bm{E}_{i,j,k}^{(n)},~\bm{B}_{i,j,k}^{(n)}\rightarrow \bm{E}(\bm{r}_{s,p}),~\bm{B}(\bm{r}_{s,p}),$
       $\bm{E}(\bm{r}_{s,p}),~\bm{B}(\bm{r}_{s,p})\rightarrow \bm{F}_{s,p}.$
-    } 
+    }
     (3);
   \draw[arrow] (3) to[bend left=20] (4);
   \draw[arrow] (4) to[bend left=10]
     node [float,midway,align=right,yshift=0.3cm,xshift=0cm] {
-      (5) Current filtering: 
+      (5) Current filtering:
       $\bm{j}^{(n+1/2)}_{i,j,k}\rightarrow \tilde{\bm{j}}^{(n+1/2)}_{i,j,k}.$
-    } 
+    }
     (6);
   \draw[arrow] (6) to (7);
-  \draw[arrow] (7) to[bend left=10] 
+  \draw[arrow] (7) to[bend left=10]
     node [font=\footnotesize,midway,yshift=-0.2cm,align=right] {
       $n\to n+1$
-    } 
+    }
     (1);
 \end{tikzpicture}
   \caption{Key steps of the particle-in-cell plasma simulation algorithm.\label{fig:pic-steps}}
@@ -163,7 +163,7 @@ There are numerous implementations of this algorithm \REF. In particular, \textt
 
 \section{Highly magnetized (guiding center) approximation}
 
-One of the main bottlenecks on the performance of the codes that employ PIC algorithms is the integration of particles' equations of motion (step 3 in figure~\ref{fig:pic-steps}); sometimes also called a \emph{particle push} substep. This integration is typically done using an explicit scheme with several substeps: 
+One of the main bottlenecks on the performance of the codes that employ PIC algorithms is the integration of particles' equations of motion (step 3 in figure~\ref{fig:pic-steps}); sometimes also called a \emph{particle push} substep. This integration is typically done using an explicit scheme with several substeps:
 
 \begin{align}
   \bm{r}^{(n+1/2)} &= \bm{r}^{(n)} + \frac{\bm{u}^{(n)}}{2\gamma^{(n)}}\Delta t,\\
@@ -180,11 +180,11 @@ One of the main bottlenecks on the performance of the codes that employ PIC algo
   \end{aligned}
 \end{equation}
 
-\noindent Here $\bm{u}^\pm$ are intermediate variables, while 
+\noindent Here $\bm{u}^\pm$ are intermediate variables, while
 \begin{equation}
-  \bm{t} = \frac{q_s}{m_s}\frac{1}{\gamma^\pm }\bm{B}(\bm{r}^{(n+1/2)}) \frac{\Delta t}{2 c}, \textrm{ and } \bm{s} = \frac{2\bm{t}}{1 + |\bm{t}|^2}. 
+  \bm{t} = \frac{q_s}{m_s}\frac{1}{\gamma^\pm }\bm{B}(\bm{r}^{(n+1/2)}) \frac{\Delta t}{2 c}, \textrm{ and } \bm{s} = \frac{2\bm{t}}{1 + |\bm{t}|^2}.
 \end{equation}
-\noindent $\gamma^\pm$ are the Lorentz factors corresponding to intermediate velocities $\gamma^\pm = \sqrt{1 + (\bm{u}^{\pm})^2}$. Notice that they are equal, $\gamma^+ = \gamma^-$, i.e., the magnetic rotation substep does not modify particle's energy.\footnote{This result makes perfect physical sense as the magnetic field cannot impose work on charged particles.} There are numerous other integration schemes for the equations of motion; for a more detailed comprehensive overview and comparison see \REF. 
+\noindent $\gamma^\pm$ are the Lorentz factors corresponding to intermediate velocities $\gamma^\pm = \sqrt{1 + (\bm{u}^{\pm})^2}$. Notice that they are equal, $\gamma^+ = \gamma^-$, i.e., the magnetic rotation substep does not modify particle's energy.\footnote{This result makes perfect physical sense as the magnetic field cannot impose work on charged particles.} There are numerous other integration schemes for the equations of motion; for a more detailed comprehensive overview and comparison see \REF.
 
   %\newthought{There's something to be said} for having a good opening line. Morbi commodo, ipsum sed pharetra gravida, orci  $x = 1/\alpha$ magna rhoncus neque, id pulvinar odio lorem non turpis \cite{Eigen1971, Knuth1968}. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
   %$$\zeta = \frac{1039}{\pi}$$

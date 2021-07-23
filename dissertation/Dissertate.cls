@@ -38,7 +38,8 @@
 \RequirePackage{graphicx}
 \RequirePackage{amssymb}
 \RequirePackage{lettrine}
-\RequirePackage[super,comma,numbers]{natbib}
+%\RequirePackage[super,comma,numbers]{natbib}
+\RequirePackage{natbib}
 \renewcommand{\bibnumfmt}[1]{[#1]}
 \RequirePackage[width=5.75in, letterpaper]{geometry}
 \RequirePackage{fancyhdr}
@@ -87,7 +88,8 @@
 								figurewithin=chapter,
 								tablewithin=chapter]{caption}
 
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
 
 %\onehalfspacing
 %\doublespacing
