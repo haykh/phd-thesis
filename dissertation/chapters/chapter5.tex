@@ -20,7 +20,7 @@ One of the key observational characteristics of $\gamma$-ray pulsars is a hard p
 
 \begin{figure}[htb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-        \includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig1.pdf}
+        \includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig1.pdf}
     }{
         \caption{Data from {\it Fermi Observatory} observations of the cutoff energy of photon spectra plotted against the estimated light cylinder magnetic fields for young radio-loud, young radio-quiet, and millisecond pulsars. The dashed lines are the best fit power laws, and the corresponding numbers are the power-law photon indices. Data taken from  \href{https://fermi.gsfc.nasa.gov/ssc/data/access/lat/2nd_PSR_catalog/}{LAT Second Catalog of Gamma-ray Pulsars}.}
         \label{fig:pairprod-fermi_data}
@@ -46,7 +46,7 @@ In this work we study the previously unexplored regime of reconnection with self
 
 \begin{figure}[ht]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig2.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig2.pdf}}
     \caption{Reconnection in two-dimensional box with injection from top and bottom and outflowing boundaries on the left and right. The upstream magnetic field is in the plane of the picture. The color represents the plasma density normalized to the upstream value, $n_0$. $\beta=v/c$ is the typical inflow or outflow velocity. The image is taken from an actual simulation.}
     \label{fig:pairprod-rec_scheme}
 \end{figure}
@@ -125,7 +125,7 @@ Figure \ref{fig:pairprod-sigma_pp} demonstrates two important facts: the high en
 
 \begin{figure}[htb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-        \includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig3.pdf}
+        \includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig3.pdf}
     }{
         \caption{Two-photon pair production cross section as a function of the angle between their momenta, $\phi$, and the product of photon energies in units of $m_e c^2$. The pair production probability is highest when the center-of-momentum energy is $\approx \sqrt{2}m_e c^2$. For small angles only the most energetic photons can pair produce with each other, while head-on interactions allow a wider range of energies.}
         \label{fig:pairprod-sigma_pp}
@@ -140,7 +140,7 @@ In an optically thin regime for a power-law energy distribution of photons one c
 
 \begin{figure}[tb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-        \includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig4.pdf}
+        \includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig4.pdf}
     }{
         \caption{Schematic illustration of the reconnecting current sheet in its steady state. Plasma in the current sheet cools down via synchrotron radiation. These photons later pair produce in the upstream, and secondary pairs are advected into the current sheet.}
         \label{fig:pairprod-steady_state}
@@ -297,14 +297,14 @@ We also allow photons to escape into upstream from within the dense regions of p
 
 \begin{figure}[tb]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig5.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig5.pdf}}
     \caption{Snapshots of plasma density from three different simulations with $\sigma_0=5000$: a-b) without synchrotron cooling or pair production; c-d) with cooling ($\gamma_{\rm rad}=1000$, $\gamma_c=50$) but without pair production; e-f) with both cooling and pair production (additionally $p_0=10^{-5}$). Three plots on the left (panels a, c, e) represent the averaged densities along the current sheet ($x$ axis) plotted vs $y$ axis. Note that all three colorbars as well as the horizontal axes in panels (a, c, e) have the same scale for convenience. When cooling is enabled, plasmoids become effectively compressive, so the typical plasmoid sizes and central overdensities are larger in panel (c) compared to panel (a), where there is no cooling. With pair production enabled (panels e, f) the secondary plasma mass loads both the far upstream and plasmoids, making them larger and heavier.}
     \label{fig:pairprod-snapshot_dens}
 \end{figure}
 
 \begin{figure}[tb]
     \centering
-    \centerline{\includegraphics[width=0.85\textwidth]{dissertation/figures/ch5-pairproduction/fig6.pdf}}
+    \centerline{\includegraphics[width=0.85\textwidth]{figures/ch5-pairproduction/fig6.pdf}}
     \caption{Snapshots of the mean particle Lorentz factor from the same three simulations as in Figure~\ref{fig:pairprod-snapshot_dens}. In panel (a) where we present the fiducial run without cooling or pair production, most of the high energy plasma with $\gamma\sim \sigma_0$ is contained within the plasmoids, providing pressure support to resist contraction. When synchrotron radiation is enabled, shown in (b), particles within the plasmoids are efficiently cooled to energies $<\gamma_{\rm rad}$, the pressure support is weaker, and the plasmoids are denser. In this case most of the high energy plasma is contained around the primary current layer, where the magnetic field is weak and the cooling is inefficient. Panel (c) shows the run with pair production, in which case the upstream is hotter, since the newly born secondary pairs inherit the power-law energy distribution from their parent photons.}
     \label{fig:pairprod-snapshot_meang}
 \end{figure}
@@ -324,7 +324,7 @@ When pair production is enabled (Figs.~\ref{fig:pairprod-snapshot_dens}e,f and \
 
 \begin{figure}[htb]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig7.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig7.pdf}}
     \caption{Cold magnetization parameter, $\sigma_{\rm c}=B^2/4\pi\rho c^2$, and hot magnetization parameter, $\sigma_{\rm h}=B^2/4\pi\langle\gamma\rangle\rho c^2$, averaged along the current sheet and over time for the runs without (a) and with pair production (b). Panel (c) shows the average multiplicity (density of secondary pairs divided by the density of primary pairs). Shaded regions show the interior of plasmoids where the multiplicity is suppressed artificially. Two solid black lines show the level of the upstream magnetization $\sigma_{\rm c}$, which, when divided by multiplicity, gives the effective magnetization (black dashed line). In contrast to the case without pair production (a), when secondary plasma is produced the magnetization is reduced by a factor of multiplicity (b). Also, since the newly born pairs are hot, $\sigma_{\rm h}$ is also reduced in the upstream.}
     \label{fig:pairprod-sigmas_cut}
 \end{figure}
@@ -347,7 +347,7 @@ In addition, the mergers constantly eject new high energy photons from freshly a
 % \sasha{whant to comment how particles are accelerated in mergers in the case of strong cooling?};\hayk{I don't understand this}
 
 \begin{figure}[H]
-    \centering\includegraphics[width=0.9\textwidth]{dissertation/figures/ch5-pairproduction/fig8.pdf}
+    \centering\includegraphics[width=0.9\textwidth]{figures/ch5-pairproduction/fig8.pdf}
     \caption{Snapshot from a simulation of the reconnection with the cooling and pair production with $\sigma_0=10^4$, $\gamma_c=50$, $\gamma_{\rm rad}=1000$, $p_0=10^{-5}$. The box extends further in the vertical direction, in this figure we focus on the large plasmoid. Plots show (a) the total plasma density normalized by the initial upstream density, (b) the density of photons with $h\nu>50$ MeV, (c) the local plasma multiplicity, $\eta$, defined as the density of secondary plasma divided by the density of the injected plasma. Interiors of plasmoids are low in multiplicity since we allow photons to escape from them without having a chance to pair produce. Maximum density in the top plot (in white) indicates the region, where we turn off cooling to prevent plasmoids from getting too dense and making the local skin depth unresolved. When the pair production is enabled the upstream is abundant with secondary plasma and also plasmoids are typically larger and slower, since they rapidly expand via pair production. In this snapshot the massive plasmoid in the middle is undergoing mergers with smaller plasmoids, one of which (at $x=-300$, $y=-50$) has not yet been fully absorbed. Most of the photons are emitted within plasmoids close to their centers, where both the magnetic field and density are high. Lack of high energy photons in the very middle of the large plasmoid is due to the fact that plasma in that region is cold. The full movie of this simulation is available \href{\linkVidOne}{online} (direct link: \url{\linkVidOne}).}
     \label{fig:snapshot}
 \end{figure}
@@ -357,7 +357,7 @@ In addition, the mergers constantly eject new high energy photons from freshly a
 
 \begin{figure}[htb]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig9.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig9.pdf}}
     \caption{Particle and photon spectra for the $\sigma_0=200$ simulations without pair production for different cooling regimes in late-time steady state. The cooling decreases, i.e., $\gamma_{\rm rad}$ increases, from dark blue to yellow; $\gamma_{\rm rad}=\infty$ is the case without cooling (i.e., no photons). Two colorbars below put particle energies and synchrotron photon energies into correspondence, given a fixed background magnetic field, which in general varies depending on particle position. Particle spectra are shifted vertically for illustration purposes; circles indicate $\gamma_{\rm rad}$ for each case as well as the corresponding synchrotron photon energy in the upstream magnetic field. Cooling typically conserves the $\gamma^{-1}\text{-}\gamma^{-3/2}$ slope of the particle energy distribution function. Peaks in synchrotron photon spectra for each case corresponding to $\gamma_{\rm rad}$ in particles; high energy tails with $\nu F_{\nu}\propto \nu^{-1/2}$ are formed during transient mergers, when particles accelerated in secondary current sheets are captured by plasmoids and rapidly cooled.}
     \label{fig:pairprod-no_pair_runs}
 \end{figure}
@@ -380,7 +380,7 @@ Further, we discuss the results of our runs with pair production. For all the ru
 
 \begin{figure}[htb]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig10.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig10.pdf}}
     \caption{Particle (a) and photon (b) spectra for the $\sigma_0=5000$, $\gamma_{\rm rad} = 1000$, $\gamma_c=50$ simulations without cooling, with cooling but without pair production, and with both cooling and pair production enabled in late-time steady state. Two colorbars below put particle energies and synchrotron photon energies into correspondence, given a fixed background magnetic field. Dashed line is the spectrum of newly born secondary pairs in the run with pair production. Cooling does not strongly affect the slope, whereas when pair production is enabled the effective magnetization is dropped, and the upstream is no longer cold (see the newly born pairs). This causes the shift of the peak in photon spectrum (corresponding to the effective magnetization, $\sigma_{\rm eff}$).}
     \label{fig:pairprod-pair_runs}
 \end{figure}
@@ -395,7 +395,7 @@ This behavior is also reflected in the photon spectrum (Fig.~\ref{fig:pairprod-p
 
 \begin{figure}[htb]
     \centering
-    \centerline{\includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig11.pdf}}
+    \centerline{\includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig11.pdf}}
     \caption{Box-averaged quantities from four of our simulations: (a) magnetization $\langle\sigma_{\rm c}\rangle$ (blue) and particle spectra cutoff $\gamma_{\rm cutoff}$ (red); (b) photon spectral cutoff $E_{\rm cutoff}$ (magenta), all plotted against the initial magnetization parameter, $\sigma_0$, which is proportional to the background magnetic field squared, $B_0^2$. Widths of the colored regions represent the uncertainties in determining these parameters from simulations. Dotted black lines are simple scalings without pair production feedback, and hatched regions are theoretical predictions with photon indexes $\Gamma=3\text{-}4$.}
     \label{fig:pairprod-cutoffs_vs_sigma}
 \end{figure}
@@ -422,7 +422,7 @@ To interpret these results in terms of observations, one should note that in the
 
 \begin{figure}[htb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-        \includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig12.pdf}
+        \includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig12.pdf}
     }{
         \caption{High energy photon luminosity in our simulations plotted against the square of the initial upstream magnetization, which in pulsars should be proportional to the Poynting flux and thus the spin-down rate $\dot{E}$. The observed $L_\gamma\propto\sqrt{\dot{E}}$ (in blue) and expected $L_\gamma\propto\dot{E}$ (if no pair production were present, in red) trends are also shown.}
         \label{fig:pairprod-Lgamma_Edot}
@@ -531,7 +531,7 @@ From our simulations we find that $\eta_{\rm LC}\propto \sigma_0\propto \dot{E}^
 
 \begin{figure}[htb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
-        \includegraphics[width=\textwidth]{dissertation/figures/ch5-pairproduction/fig13.pdf}
+        \includegraphics[width=\textwidth]{figures/ch5-pairproduction/fig13.pdf}
     }{
         \caption{Efficiency of the outer magnetosphere pair production in terms of the secondary plasma multiplicity, $\eta_{\rm LC}$, plotted against $P$ and $\dot{P}$ for all of the known $\gamma$-ray pulsars. Uncertainties of constant $\eta_{\rm LC}$ regions are due to varying the effective photon index (within $\Gamma\sim 1.5\text{-}2.5$). According to this figure, most of the $\gamma$-ray pulsars produce a substantial amount of secondary pairs in the outer magnetosphere.}
         \label{fig:pairprod-eta_th}
