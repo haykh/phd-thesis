@@ -81,17 +81,17 @@
 
 								%justification={justified,RaggedRight},
 \RequirePackage[labelfont={bf,sf,footnotesize,singlespacing},
-								textfont={sf,footnotesize,singlespacing},
-								justification={RaggedRight},
-								singlelinecheck=false,
-								margin=0pt,
-								figurewithin=chapter,
-								tablewithin=chapter]{caption}
+				textfont={sf,footnotesize,singlespacing},
+				justification={RaggedRight},
+				singlelinecheck=false,
+				margin=0pt,
+				figurewithin=chapter,
+				tablewithin=chapter]{caption}
 
 \renewcommand*{\thefootnote}{[\arabic{footnote}]}
 
 %\onehalfspacing
-%\doublespacing
+% \doublespacing
 
 % an environment for paragraph-style section
 \providecommand\newthought[1]{%
