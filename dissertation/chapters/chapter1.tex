@@ -17,6 +17,8 @@ a time-dependent kinetic equation on the distribution functions of charged parti
 
 In practice, for magnetized plasmas around compact objects Coulomb collisions occur at much longer timescales than, e.g., particle gyration or acceleration. Such plasma is often called \emph{collisionless}. Because of this the right-hand-side of~\eqref{eq:vlasov-maxwell-boltzmann} is often neglected, and the equation is called \emph{Vlasov equation} \REF.
 
+\DRAFT{Move everything at the top of this to introduction. Then carry on with some astrophysical motivations (pulsars, magnetars, blazars, coronae, MAD disks etc).}
+
 This formula then has to be coupled with Maxwell's equations on electromagnetic fields, $\bm{E}(t;\bm{r})$ and $\bm{B}(t;\bm{r})$:
 
 \begin{multicols}{2}
@@ -153,7 +155,7 @@ As a result, figure~\ref{fig:pic-steps} represents the full set of discretized e
   \caption{Key steps of the particle-in-cell plasma simulation algorithm.\label{fig:pic-steps}}
 \end{figure}
 
-There are numerous implementations of this algorithm \REF. In particular, \texttt{Tristan-MP} \REF has long been a reliable code widely used by the relativistic plasma astrophysics community. It is designed with the \texttt{Fortran 90} standards and parallelized using \texttt{MPI} libraries. \texttt{Tristan-MP v2} \REF~is the new incarnation of the original code with various added capabilities and optimizations. I will discuss some of the new capabilities, such as the radiation and quantum electrodynamic effects, in one of the following sections. Meanwhile, in the following section I describe another important advancement in the new code, aimed to help simulate plasmas in global astrophysical systems, where physically relevant scales are separated by many orders of magnitudes.
+There are numerous implementations of this algorithm \REF. In particular, \texttt{Tristan-MP} \REF has long been a reliable code widely used by the relativistic plasma astrophysics community. It is written in \texttt{Fortran} and parallelized using the \texttt{MPI} library. \texttt{Tristan-MP v2} \REF~is the new incarnation of the original code with various added capabilities and optimizations. I will discuss some of the new capabilities, such as the radiation and quantum electrodynamic effects, in one of the following sections. Meanwhile, in the following section I describe another important advancement in the new code, aimed to help simulate plasmas in global astrophysical systems, where physically relevant scales are separated by many orders of magnitudes.
 
 %\begin{figure}
   %\centering
@@ -171,7 +173,7 @@ One of the main bottlenecks on the performance of the codes that employ PIC algo
   \bm{r}^{(n+1)} &= \bm{r}^{(n+1/2)} + \frac{\bm{u}^{(n+1)}}{2\gamma^{(n+1)}}\Delta t.
 \end{align}
 
-\noindent Notice, that the Lorentz force, $\bm{F}_{s,p}$, in this scheme shall contain the particle's velocity \eqref{eq:lorentz-force}. In general, equation \eqref{eq:part-push2} is implicit with respect to the $\bm{u}^{(n+1)}$. However, typically, explicit approach is used for solving it. One of the most commonly used ones is the \emph{Boris algorithm} \REF, which is performed in three substeps:
+\noindent Notice, that the Lorentz force, $\bm{F}_{s,p}$, in this scheme shall contain the particle's velocity \eqref{eq:lorentz-force}. In general, equation \eqref{eq:part-push2} is implicit with respect to the $\bm{u}^{(n+1)}$. However, typically, explicit approach is used for solving it. One of the most commonly used ones is the \emph{Boris algorithm} \citep{Boris1970}, which is performed in three substeps:
 \begin{equation}
   \begin{aligned}
     \textrm{half electric acceleration:  }&\bm{u}^- = \bm{u}^{(n)} + \frac{q_s}{m_s}\bm{E}(\bm{r}^{(n+1/2)})\frac{\Delta t}{2}, \\
@@ -184,7 +186,9 @@ One of the main bottlenecks on the performance of the codes that employ PIC algo
 \begin{equation}
   \bm{t} = \frac{q_s}{m_s}\frac{1}{\gamma^\pm }\bm{B}(\bm{r}^{(n+1/2)}) \frac{\Delta t}{2 c}, \textrm{ and } \bm{s} = \frac{2\bm{t}}{1 + |\bm{t}|^2}.
 \end{equation}
-\noindent $\gamma^\pm$ are the Lorentz factors corresponding to intermediate velocities $\gamma^\pm = \sqrt{1 + (\bm{u}^{\pm})^2}$. Notice that they are equal, $\gamma^+ = \gamma^-$, i.e., the magnetic rotation substep does not modify particle's energy.\footnote{This result makes perfect physical sense as the magnetic field cannot impose work on charged particles.} There are numerous other integration schemes for the equations of motion; for a more detailed comprehensive overview and comparison see \REF.
+\noindent $\gamma^\pm$ are the Lorentz factors corresponding to intermediate velocities $\gamma^\pm = \sqrt{1 + (\bm{u}^{\pm})^2}$. Notice that they are equal, $\gamma^+ = \gamma^-$, i.e., the magnetic rotation substep does not modify particle's energy.\footnote{This result makes perfect physical sense as the magnetic field cannot impose work on charged particles.} There are numerous other integration schemes for the equations of motion; for a more detailed comprehensive overview and comparison see \cite{2018ApJS..235...21R}.
+
+\DRAFT{Motivate why we need GCA here. Then explain why just simple GCA will not work. Then explain what the coupled Boris/GCA is, and how it works. Explain why this will help a lot in simulations of the magnetosphere, both from the point of view of scale separation, and radiation.}
 
   %\newthought{There's something to be said} for having a good opening line. Morbi commodo, ipsum sed pharetra gravida, orci  $x = 1/\alpha$ magna rhoncus neque, id pulvinar odio lorem non turpis \cite{Eigen1971, Knuth1968}. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
   %$$\zeta = \frac{1039}{\pi}$$
