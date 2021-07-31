@@ -3,6 +3,7 @@
 
 \documentclass[School=Princeton]{Dissertate}
 \usepackage{amsmath,bm,multicol,xcolor,esint,enumitem,float,epigraph,tikz}
+\usepackage[linesnumbered]{algorithm2e}
 \usepackage[export]{adjustbox}
 \usepackage{aasmacros}
 
@@ -52,35 +53,39 @@
 
 % the front matter
 \input{frontmatter/personalize}
-\maketitle
-\copyrightpage
-\abstractpage
-\tableofcontents
-%\authorlist
-% \listoffigures
-\dedicationpage
-\acknowledgments
+% \maketitle
+% \copyrightpage
+% \abstractpage
+% \tableofcontents
+% \dedicationpage
+% \acknowledgments
 
-%\doublespacing
+% %\authorlist
+% % \listoffigures
+
 \singlespacing
 
 % include each chapter...
 \setcounter{chapter}{-1}  % start chapter numbering at 0
 \include{chapters/introduction}
 \include{chapters/chapter1}
+% paper # 2
 \include{chapters/chapter2}
+% paper # 3
 \include{chapters/chapter3}
+% paper # 1
 \include{chapters/chapter4}
-\include{chapters/chapter5}
 \include{chapters/conclusion}
 \begin{appendices}
+    \include{chapters/appendix0}
     \include{chapters/appendixA}
+    \include{chapters/appendixB}
 \end{appendices}
 
 \singlespacing
 
-% the back matter
-\clearpage
+
+% \clearpage
 \bibliography{references}
 \addcontentsline{toc}{chapter}{References}
 \bibliographystyle{apalike2}

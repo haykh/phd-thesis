@@ -22,7 +22,7 @@
 \def\pdTwoSchool#1{\gdef\@pdTwoSchool{#1}}
 \def\pdTwoYear#1{\gdef\@pdTwoYear{#1}}
 
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \usepackage{hyperref}
 \RequirePackage[tiny, md, sc]{titlesec}
 \setlength{\headheight}{15pt}
@@ -91,7 +91,6 @@
 \renewcommand*{\thefootnote}{[\arabic{footnote}]}
 
 %\onehalfspacing
-% \doublespacing
 
 % an environment for paragraph-style section
 \providecommand\newthought[1]{%
