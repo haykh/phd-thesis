@@ -2,23 +2,23 @@
 \section{Cross sections for the QED processes}
 \label{appendix:num-crosssections}
 
-In this appendix we present the expressions for the differential and total cross sections of three different QED processes included in \texttt{Tristan-MP v2} and described in section~\ref{sec:num-QED}. All the expressions are taken from \cite{1985quel.book.....A}. In this section $\sigma_T$ is the Thomson cross section, $d\Omega$ is the differential solid angle, and $\theta$ is the scattering angle between the initial and final momenta; all the energies are normalized to $m_e c^2$. Also notice, that the total cross section is a relativistic invariant.
+In this appendix we present the expressions for the differential and total cross sections of three different QED processes included in \texttt{Tristan-MP v2} and described in section~\ref{sec:num-QED}. All the expressions are taken from the book by \cite{1985quel.book.....A}. In this section $\sigma_T$ is the Thomson cross section, $d\Omega$ is the differential solid angle, and $\theta$ is the scattering angle between the initial and final momenta; all the energies are normalized to $m_e c^2$. Also notice, that the total cross section is a relativistic invariant.
 
 For \emph{Compton scattering} of a photon on an electron (or positron) it is convenient to express the cross sections in the $e^\pm$ rest-frame:
 \begin{equation}
     \begin{aligned}
         \frac{d \sigma_C}{d\Omega} &= \frac{3}{16\pi} \sigma_T 
-            \frac{1 + \cos^2{\theta}}{\left(1 + \varepsilon_2(1-\cos{\theta})\right)^2}
-            \left(1 + \frac{\varepsilon_2^2(1-\cos{\theta})^2}{(1+\cos^2{\theta})\left(1 + \varepsilon_2 (1-\cos{\theta})\right)}\right),\\
+            \frac{1 + \cos^2{\theta}}{\left(1 + \varepsilon_1(1-\cos{\theta})\right)^2}
+            \left(1 + \frac{\varepsilon_1^2(1-\cos{\theta})^2}{(1+\cos^2{\theta})\left(1 + \varepsilon_1 (1-\cos{\theta})\right)}\right),\\
         \sigma_C &= \frac{3}{4}\sigma_T\left[
-            \frac{1+\varepsilon_2}{\varepsilon_2^3}
-                \left( \frac{2\varepsilon_2(1+\varepsilon_2)}{1+2\varepsilon_2} - \ln{(1 + 2\varepsilon_2)}\right)
-            + \frac{\ln{(1+2\varepsilon_2)}}{2\varepsilon_2} - \frac{1 + 3\varepsilon_2}{(1 + 2\varepsilon_2)^2},
+            \frac{1+\varepsilon_1}{\varepsilon_1^3}
+                \left( \frac{2\varepsilon_1(1+\varepsilon_1)}{1+2\varepsilon_1} - \ln{(1 + 2\varepsilon_1)}\right)
+            + \frac{\ln{(1+2\varepsilon_1)}}{2\varepsilon_1} - \frac{1 + 3\varepsilon_1}{(1 + 2\varepsilon_1)^2},
         \right]
     \end{aligned}
 \end{equation}
 
-\noindent where $\varepsilon_2$ is the energy of the photon after the scattering (in the  $e^\pm$ rest-frame).
+\noindent where $\varepsilon_1$ is the energy of the photon before the scattering (in the  $e^\pm$ rest-frame).
 
 For \emph{two-photon pair production} process the cross sections are given in the center-of-momentum frame of the two interacting photons:
 
@@ -37,7 +37,12 @@ For \emph{two-photon pair production} process the cross sections are given in th
     \end{aligned}
 \end{equation}
 
-\noindent where $\varepsilon_0$ is the energy of either of the photons in the center-of-momentum frame. Notice, that this interaction is prohibited if $\varepsilon_0 < 1$, i.e., if the total energy of the interacting photons in the center-of-momentum frame is less than $2m_e c^2$.
+\noindent where $\varepsilon_0$ is the energy of either of the photons in the center-of-momentum frame. For two photons with energies $\varepsilon_1$ and $\varepsilon_2$ in an arbitrary frame with an incident angle $\phi$ w.r.t. each other we find: 
+\begin{equation}
+    \varepsilon_0 = \frac{1}{2}\frac{\varepsilon_1 \varepsilon_2}{(m_e c^2)^2}\left(1-\cos{\phi}\right).
+\end{equation}
+
+\noindent Notice, that this interaction is prohibited if $\varepsilon_0 < 1$, i.e., if the total energy of the interacting photons in the center-of-momentum frame is less than $2m_e c^2$.
 
 For \emph{pair-annihilation} the cross sections are also given in the center-of-momentum frame of the interacting electron and positron:
 

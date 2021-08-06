@@ -3,9 +3,14 @@
 
 \documentclass[School=Princeton]{Dissertate}
 \usepackage{amsmath,bm,multicol,xcolor,esint,enumitem,float,epigraph,tikz}
-\usepackage[linesnumbered]{algorithm2e}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage[export]{adjustbox}
 \usepackage{aasmacros}
+
+\setcitestyle{aysep={}} 
+
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
 
 \newcommand{\sidebysidecaption}[4]{%
 \RaggedRight%
@@ -46,22 +51,25 @@
            shorten >=2pt,}
 }
 
+\newcommand{\noop}[1]{}
+
 \newcommand{\REF}{{\color{red}[REF]}}
-\newcommand{\DRAFT}[1]{{\color{red}#1}}
+% \newcommand{\EDIT}[1]{{\color{red}#1}}
+\newcommand{\EDIT}[1]{{#1}}
 
 \begin{document}
+\interfootnotelinepenalty=10000
 
 % the front matter
 \input{frontmatter/personalize}
-% \maketitle
-% \copyrightpage
-% \abstractpage
-% \tableofcontents
-% \dedicationpage
-% \acknowledgments
+\maketitle
+\copyrightpage
+\abstractpage
+\tableofcontents
+\acknowledgments
+\dedicationpage
 
-% %\authorlist
-% % \listoffigures
+% \listoffigures
 
 \singlespacing
 
