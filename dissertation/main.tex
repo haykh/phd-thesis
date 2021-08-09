@@ -11,6 +11,7 @@
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
+\geometry{letterpaper, left=1.5in, top=1in, bottom=1in, right=1in}
 
 \newcommand{\sidebysidecaption}[4]{%
 \RaggedRight%
@@ -65,9 +66,9 @@
 \maketitle
 \copyrightpage
 \abstractpage
-\tableofcontents
 \acknowledgments
 \dedicationpage
+\tableofcontents
 
 % \listoffigures
 
@@ -75,20 +76,22 @@
 
 % include each chapter...
 \setcounter{chapter}{-1}  % start chapter numbering at 0
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \include{chapters/introduction}
-\include{chapters/chapter1}
-% paper # 2
-\include{chapters/chapter2}
-% paper # 3
-\include{chapters/chapter3}
-% paper # 1
-\include{chapters/chapter4}
-\include{chapters/conclusion}
-\begin{appendices}
-    \include{chapters/appendix0}
-    \include{chapters/appendixA}
-    \include{chapters/appendixB}
-\end{appendices}
+%\include{chapters/chapter1}
+%% paper # 2
+%\include{chapters/chapter2}
+%% paper # 3
+%\include{chapters/chapter3}
+%% paper # 1
+%\include{chapters/chapter4}
+%\include{chapters/conclusion}
+%\begin{appendices}
+    %\include{chapters/appendix0}
+    %\include{chapters/appendixA}
+    %\include{chapters/appendixB}
+%\end{appendices}
 
 \singlespacing
 
