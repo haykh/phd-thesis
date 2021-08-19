@@ -12,9 +12,9 @@ Matter around compact astrophysical objects is typically fully ionized. As a res
 
 \begin{equation}
   \label{eq:vlasov-maxwell-boltzmann}
-  \frac{\partial f_s}{\partial t} + \bm{v} \nabla f_s - \frac{q_s}{m_s}\left(\bm{E}+\frac{\bm{v}}{c}\times\bm{B}\right)\frac{\partial f_s}{\partial \bm{v}} = \left(\frac{\partial f_s}{\partial t}\right)_{\rm col},
+  \frac{\partial f_s}{\partial t} + \bm{v}\cdot\nabla f_s - \frac{q_s}{m_s}\left(\bm{E}+\frac{\bm{v}}{c}\times\bm{B}\right)\cdot\frac{\partial f_s}{\partial \bm{v}} = \left(\frac{\partial f_s}{\partial t}\right)_{\rm col},
 \end{equation}
-\noindent a time-dependent kinetic equation on the distribution functions of charged particles $f_s(t;\bm{r},\bm{v})$ for a given species $s$.\footnote{Here and further we will be using $\bm{v}$ to indicate the three-velocity of the fluid or particle, as opposed to $\bm{u}$ being the spatial components of the four-velocity.} The right-hand-side of this equation is called the Landau collision integral; it describes the evolution of a distribution function due to close encounters of charged particles with each other -- a process also referred to as \emph{Coulomb collisions}. While individual Coulomb collisions occur via electromagnetic interaction and are technically accounted for in the left-hand-side of the equation~\eqref{eq:vlasov-maxwell-boltzmann}, it is useful to distinguish the former from long-range electromagnetic interactions. Then $\bm{E}$ and $\bm{B}$ represent self-consistent electric and magnetic fields created by both the external sources and the collective motion of charged particles of our system.
+\noindent a time-dependent kinetic equation on the distribution functions of charged particles $f_s(t;\bm{r},\bm{v})$ for a given species $s$.\footnote{Here and further we will be using $\bm{v}$ to indicate the three-velocity of the fluid or particle, as opposed to $\bm{u}$ being the spatial components of the four-velocity.} The right-hand-side of this equation is called the Landau collision integral; it describes the evolution of a distribution function due to close encounters of charged particles with each other -- a process also referred to as \emph{Coulomb collisions}. $\bm{E}$ and $\bm{B}$ in \eqref{eq:vlasov-maxwell-boltzmann} represent self-consistent electric and magnetic fields created by both the external sources and the collective motion of charged particles of our system.
 
 In practice, for plasmas around compact objects Coulomb collisions occur at much longer timescales than, e.g., particle gyration or acceleration. Such plasma is often called \emph{collisionless}.\footnote{As opposed to collisional plasma, where Coulomb collisions or other short interactions (e.g. wave-particle scattering) effectively thermalize the plasma, making it ``fluid-like''. These plasmas are typically studied by the means of magnetohydrodynamics (MHD; \citealt{1960ecm..book.....L}).} Because of this the right-hand-side of~\eqref{eq:vlasov-maxwell-boltzmann} is neglected in the context of collisionless plasma, and the resulting equation is called \emph{Vlasov equation} \citep{1968SvPhU..10..721V}. 
 
@@ -215,22 +215,22 @@ As will be demonstrated in \S\ref{ch:pulsar}, this technique allows to push the 
 
 \section{Synchrotron and inverse-Compton cooling}
 
-In the vicinity of compact objects plasma is often ultra-relativistic. In this regime radiative reaction forces may become dynamically important. Typically, this radiation reaction is due to either \emph{synchrotron} radiation in strong magnetic fields, or \emph{inverse-Compton} (IC) radiation induced by a background photon field. While naive PIC simulations do self-consistently capture braking radiation from accelerated charges, the energy of this radiation is typically orders of magnitude smaller than in reality at typical simulation timescales. Because of that in \texttt{Tristan-MP v2} we introduce an artificial radiation reaction force with an upscaled strength, that can account for both the synchrotron and inverse-Compton cooling.\footnote{For the examples of implementation and usage of similar techniques in PIC simulations see, e.g., \cite{2010NJPh...12l3005T, 2016CoPhC.204..141V, 2016ApJ...828...92Y, 2019ApJ...877...53H, 2019MNRAS.482L..60W, 2020arXiv201203043N}.} This force can be represented in the following form (for a particle with a four-velocity $\bm{u}=\gamma\bm{\beta}$):
+In the vicinity of compact objects plasma is often ultra-relativistic. In this regime radiative reaction forces may become dynamically important. Typically, this radiation reaction is due to either \emph{synchrotron} radiation in strong magnetic fields, or \emph{inverse-Compton} (IC) radiation induced by a background photon field. While naive PIC simulations do self-consistently capture braking radiation from accelerated charges, the frequency of this radiation is typically underresolved.\footnote{Normally the integration timestep is adjusted to resolve the gyration frequency of cold particles, $\omega_g = |q_s|B / m_s c$, while, for instance, the frequency of the synchrotron radiation for the ultra-relativistic particles is $\omega_s \sim \gamma^2\omega_g\gg \omega_g$.} Because of that in \texttt{Tristan-MP v2} we introduce an artificial radiation reaction force with an upscaled strength, that can account for both the synchrotron and inverse-Compton cooling.\footnote{For the examples of implementation and usage of similar techniques in PIC simulations see, e.g., \cite{2010NJPh...12l3005T, 2016CoPhC.204..141V, 2016ApJ...828...92Y, 2019ApJ...877...53H, 2019MNRAS.482L..60W, 2020arXiv201203043N}.} This force can be represented in the following form (for a particle with a four-velocity $\bm{u}=\gamma\Vector{\beta}$): 
 
 \begin{equation}
 \begin{split}
 \label{eq:num-radiation}
     \bm{f}_{\rm rad} =& \bm{f}_{\rm syn} + \bm{f}_{\rm IC}\\
-    =&|q_s| f_{\rm rec} B_{\rm rad}\frac{\bm{\kappa}_R - \gamma^2\chi_R^2 \bm{\beta}}{\gamma_{\rm syn}^2}-|q_s| f_{\rm rec} B_{\rm rad}\frac{\gamma^2}{\gamma_{\rm IC}^2}\bm{\beta}.
+    =&|q_s| f_{\rm rec} B_{\rm rad}\frac{\Vector{\kappa}_R - \gamma^2\chi_R^2 \Vector{\beta}}{\gamma_{\rm syn}^2}-|q_s| f_{\rm rec} B_{\rm rad}\frac{\gamma^2}{\gamma_{\rm IC}^2}\Vector{\beta}.
 \end{split}
 \end{equation}
-\noindent Here $\kappa_R$ and $\chi_R$ are dimensionless functions of the electric and magnetic field at particle location:\footnote{When $\bm{E}=0$, $\chi_R$, which characterizes the synchrotron cooling in the ultra-relativistic regime, reduces to the magnetic field component perpendicular to the direction of motion: $\beta B_\perp$.}
+\noindent Here $\Vector{\kappa}_R$ and $\chi_R$ are dimensionless functions of the electric and magnetic field at particle location:\footnote{When $\bm{E}=0$, $\chi_R$, which characterizes the synchrotron cooling in the ultra-relativistic regime, reduces to the magnetic field component perpendicular to the direction of motion: $\beta B_\perp$.}
 
 \begin{equation}
     \begin{aligned}
     \label{eq:num-kappa-chi}
-        \kappa_R &= \frac{1}{B_{\rm rad}^2}\left[\left(\bm{E} + \bm{\beta}\times\bm{B}\right)\times\bm{B} + (\bm{\beta}\cdot\bm{E})\bm{E}\right],\\
-        \chi_R^2 &= \frac{1}{B_{\rm rad}^2}\left[\left(\bm{E} + \bm{\beta}\times\bm{B}\right)^2 - \left(\bm{\beta}\cdot\bm{E}\right)^2\right].
+        \Vector{\kappa}_R &= \frac{1}{B_{\rm rad}^2}\left[\left(\bm{E} + \Vector{\beta}\times\bm{B}\right)\times\bm{B} + (\Vector{\beta}\cdot\bm{E})\bm{E}\right],\\
+        \chi_R^2 &= \frac{1}{B_{\rm rad}^2}\left[\left(\bm{E} + \Vector{\beta}\times\bm{B}\right)^2 - \left(\Vector{\beta}\cdot\bm{E}\right)^2\right].
     \end{aligned}
 \end{equation}
 
@@ -247,7 +247,7 @@ In the vicinity of compact objects plasma is often ultra-relativistic. In this r
 
 In practice, during the simulation the radiation reaction force \eqref{eq:num-radiation} is evaluated at every timestep for each particle using the electric and magnetic field values interpolated to particle position, and the particle four-velocity $\bm{u}^{(n)} = (\bm{u}^{(n+1/2)} + \bm{u}^{(n-1/2)})/2$.\footnote{Here $\bm{u}^{(n+1/2)}$ is the particle velocity after the Boris-push at timestep $n$. This ensures stability of the scheme when coupled with conventional Boris algorithm.} 
 
-Further, I briefly discuss several idealized numerical experiments to test the radiation algorithms. If a particle is gyrating in a uniform magnetic field (with $\bm{E}=0$) the synchrotron term, $\bm{f}_{\rm syn}$, acts in such a way as to decrease the velocity perpendicular the magnetic field, $u_\perp$, thus shrinking the gyroradius, while exactly preserving the particle three-velocity parallel to the field, $v_\parallel$. If that is not the case, particles at rest may experience artificial self-force. The key to properly recover this behavior is to include not only the ultra-relativistic component of $\bm{f}_{\rm syn}$ (the term $\propto \chi_R^2\gamma^2$ in \eqref{eq:num-radiation}), but also the non-relativistic component (the term $\propto \kappa_R$). This fact was previously ignored in some of the earlier implementations of synchrotron cooling in PIC simulations. 
+Further, I briefly discuss several idealized numerical experiments to test the radiation algorithms. If a particle is gyrating in a uniform magnetic field (with $\bm{E}=0$) the synchrotron term, $\bm{f}_{\rm syn}$, acts in such a way as to decrease the velocity perpendicular the magnetic field, $u_\perp$, thus shrinking the gyroradius, while exactly preserving the particle three-velocity parallel to the field, $v_\parallel$. If that is not the case, particles at rest may experience artificial self-force. The key to properly recover this behavior is to include not only the ultra-relativistic component of $\bm{f}_{\rm syn}$ (the term $\propto \chi_R^2\gamma^2$ in \eqref{eq:num-radiation}), but also the non-relativistic component (the term $\propto \Vector{\kappa}_R$). This fact was previously ignored in some of the earlier implementations of synchrotron cooling in PIC simulations. 
 
 \begin{figure}[htb]
     \sidebysidecaption{0.555\linewidth}{0.42\linewidth}{
@@ -277,7 +277,7 @@ In certain scenarios we might be also interested to study the dynamics of the em
 \begin{equation}
 \begin{aligned}
     \tilde{\gamma}_{\rm syn}^2 &= m_e c^2 / \left(\frac{3}{2}\frac{\hbar |q_e| B_{\rm rad}}{m_e c}\right),\\
-    \tilde{\gamma}_{\rm IC}^2 &= m_e c^2 / \varepsilon_0. 
+    \tilde{\gamma}_{\rm IC}^2 &= m_e c^2 / \varepsilon_{\rm rad}. 
 \end{aligned}
 \end{equation}
 \noindent Notice, that for synchrotron case we only sample the radiated spectrum with a single photon at peak frequency. This assumption is justified as long as the particle gyration is resolved with many timesteps.
@@ -349,7 +349,7 @@ We test Compton scattering algorithm with a numerical experiment described initi
     }
 \end{figure}
 
-To test all of the QED effects together we perform another numerical experiment described by \cite{2020arXiv201107310B}. In this case particles can interact via two-photon pair production, pair annihilation, and Compton scattering. Simulation domain is initialized with a thermal background of electrons with a temperature of $T_{\rm init}=0.1 m_e c^2$ and no photons. As particles annihilate, they radiate photons. These photons then attempt to thermalize with the pair-plasma via Compton scattering, while at the same time producing additional pairs via two-photon pair production. System ultimately reaches the steady state, where plasma is heated to $T_{\rm eq}\approx 3T_{\rm init}$, while the photons are just partially thermalized, forming a Wien spectrum of $f\propto \varepsilon^2\exp{(-\varepsilon/T_{\rm eq})}$, as the total number of particles (photons+pairs) is conserved. Time evolution of plasma and photon distributions is shown in Figure~\ref{fig:num-svensson}. If we ignore either of these processes or capture them incorrectly, this fragile equilibrium is never reached.
+To test all of the QED effects together we perform another numerical experiment described by \cite{2020arXiv201107310B}. In this case particles can interact via two-photon pair production, pair annihilation, and Compton scattering. Simulation domain is initialized with a thermal background of electrons and positrons with a temperature of $T_{\rm init}=0.1 m_e c^2$ and no photons. As particles annihilate, they radiate photons. These photons then attempt to thermalize with the pair-plasma via Compton scattering, while at the same time producing additional pairs via two-photon pair production. System ultimately reaches the steady state, where plasma is heated to $T_{\rm eq}\approx 0.3 m_e c^2$, while the photons are just partially thermalized, forming a Wien spectrum of $f\propto \varepsilon^2\exp{(-\varepsilon/T_{\rm eq})}$, as the total number of particles (photons+pairs) is conserved. Time evolution of plasma and photon distributions is shown in Figure~\ref{fig:num-svensson}. If we ignore either of these processes or capture them incorrectly, this fragile equilibrium is never reached.
 
 \begin{figure}[htb]
     \includegraphics[width=\textwidth]{figures/ch1-numerics/fig_svensson.pdf}

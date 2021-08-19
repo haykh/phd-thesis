@@ -1,0 +1,75 @@
+\chapter{}
+\section{Dimensionless relations for global pulsar simulations}
+\label{appendix:psr-scalings}
+
+In this appendix we present some dimensionless relations both in the context of astrophysical pulsars, and our simulations. We discuss how each of these parameters is up/down scaled in our global simulations relative to realistic values.
+
+Consider a rotating perfectly conducting neutron star with a radius $R_*$ and a magnetic moment $\mu=B_* R_*^3$. For simplicity let us consider $\chi=0^\circ$, i.e., the magnetic moment is aligned with the rotation axis. If the magnetosphere is filled with enough plasma to provide the necessary charge density for screening the parallel electric field, then magnetic field lines that originate inside a circular region of radius $R_{\rm pc}$ around the magnetic axis will be open, i.e., will continue to infinity. This region, \emph{the polar cap}, has a radius of $R_{\rm pc} = R_*\sqrt{R_*/R_{\rm LC}}$, where $R_{\rm LC} = c/\Omega$ is the light cylinder of the neutron star. Electric field generated at the surface of the star across the polar cap generates a potential drop, $V_{\rm pc}$, which can be written in a dimensionless form
+\begin{equation}
+    \frac{V_{\rm pc}}{m_e c^2} = \frac{\omega_{B_*}}{\Omega}\left(\frac{R_*}{R_{\rm LC}}\right)^3\approx 2.6\cdot 10^{9}\left(\frac{B_*}{10^{12}~\textrm{G}}\right)\left(\frac{P}{100~\textrm{ms}}\right)^{-2},
+\end{equation}
+\noindent where $\omega_{B_*} = |e| B_* / m_e c$ is the nominal gyrofrequency at the surface of the star, and $P$ is the rotation period of the star. 
+
+If the plasma multiplicity is $\lambda$ close to the light cylinder, meaning that the plasma density is $n_{\rm LC} = \lambda \Omega B_{\rm LC} / 2\pi c e$, then the scale separation (ratio of the light cylinder to the plasma skin depth) in the magnetospheric current layer is given by the following expression:
+\begin{equation}
+\label{eq:psr-scalesep}
+    \frac{R_{\rm LC}}{d_e^{\rm LC}}=\left(2\lambda \frac{V_{\rm pc}}{m_e c^2}\right)^{1/2}\approx 7\times 10^{6}\left(\frac{\lambda}{10^4}\right)^{1/2}\left(\frac{B_*}{10^{12}~\textrm{G}}\right)^{1/2}\left(\frac{P}{100~\textrm{ms}}\right)^{-1}.
+\end{equation}
+
+The plasma magnetization near the light cylinder is
+\begin{equation}
+    \sigma_{\rm LC} = \frac{1}{2\lambda}\frac{V_{\rm pc}}{m_e c^2} \approx 10^5 \left(\frac{\lambda}{10^4}\right)^{-1}\left(\frac{B_*}{10^{12}~\textrm{G}}\right)\left(\frac{P}{100~\textrm{ms}}\right)^{-2}.
+\end{equation}
+
+The duration, resolution and other parameters of our simulations are chosen in such a way as to satisfy several requirements, while still being computationally feasible. These requirements are the following:
+\begin{enumerate}
+    \item $T\gtrsim 3 P$: the durations of our simulations are typically a few rotation periods to ensure the initial transient state has passed and a steady-state is reached;
+    \item $L^3\gtrsim (5 R_{\rm LC})^3$: size of the domain has to be large enough to fit at least $1 R_{\rm LC}$ of the current sheet;
+    \item $R_*\gg \Delta x$: stellar surface needs to be well resolved;
+    \item $V_{\rm pc}/m_e c^2\gg 1$: potential drop at the polar cap needs to be very large;
+    \item $\lambda > 1$: to ensure enough plasma is provided to screen the accelerating electric field, the plasma multiplicity has to be at least a few;
+    \item $d_e^* \sim \Delta x$: the plasma skin depth at the surface of the star has to be marginally resolved (or at least not strongly underresolved);
+    \item $d_e^{\rm LC}\gtrsim \Delta x$: the plasma skin depth near the magnetospheric current sheet has to be resolved to properly capture the reconnection process;
+    \item $R_{\rm LC} / d_e^{\rm LC}\gtrsim 100$: the scale separation in the current sheet has to be large;
+    \item $\sigma_{\rm LC}\gg 1$: to ensure the reconnection is in high-$\sigma$ regime (as shown in \eqref{eq:psr-scalesep} this is guaranteed from the first and second conditions);
+    \item $\omega_{B_{\rm LC}}\lesssim \Delta t^{-1}$: to properly capture the synchrotron cooling and gyration of particles in the current layer, their corresponding gyration periods have to be resolved.
+\end{enumerate}
+
+In our simulation \texttt{R75\_ang0} we use $L=2040\Delta x$, $R_*=75\Delta x$, $R_{\rm LC}=444\Delta x$ ($P=6200\Delta t$, $\Omega \approx 10^{-3}\Delta t^{-1}$, with the speed of light being $c=0.45\Delta x / \Delta t$), and $\omega_{B_*}\approx 10^3\Delta t^{-1}$.\footnote{This means that gyration of the coldest particles is extremely underresolved near the surface of the star. This is only possible because of the coupled GCA/Boris particle pusher we employ.} This yields $V_{\rm pc}/m_e c^2 \approx 5\cdot 10^3$, $\omega_{B_{\rm LC}}\sim 5\Delta t^{-1}$ (marginally underresolved for the lowest energy particles). We also typically have $\lambda \sim 5\text{-}10$, and, thus, $d_e^*\approx 0.1\Delta x$, $d_e^{\rm LC}\approx 2\Delta x$, and $R_{\rm LC}/d_e^{\rm LC}\sim 200\text{-}300$. Magnetization, on the other hand, is $\sigma_{\rm LC}\sim 500$.
+
+\section{Hybrid particle mover algorithm}
+\label{appendix:psr-gcaalg}
+
+In all of our simulations of pulsar magnetospheres we employ a hybrid particle mover algorithm \cite{2020ApJS..251...10B}. This algorithm allows to switch between two numerical schemes for solving the equation of motion of particles depending on the electric and magnetic field values at particle location, as well as the momentum of the particle. This allows to significantly underresolve particle gyration in most of the magnetosphere, moving particles rigidly bound to magnetic fieldlines, while still recovering the correct motion along the fieldlines (thus, the current, $j_\parallel$), and particle dynamics in regions with vanishing magnetic field (i.e., particle acceleration in the current sheet).
+
+In the GCA (guiding center approximation) regime the motion of the particle is reduced to the motion of its guiding center, plus motion along the magnetic fieldline. The particle equation of motion in this regime can be written in the following form:
+
+\begin{equation}
+    \begin{aligned}
+        \frac{d \bm{r}}{d t} &= \frac{u_\parallel}{\gamma} + \bm{v}_E,\\
+        \frac{d u_\parallel}{d t} &= \frac{q_s}{m_s} E_\parallel,\\
+        \mu &\equiv \frac{m_s u_{\perp g}^2}{2 B}\sqrt{1- v_E^2 / c^2} = 0.
+    \end{aligned}
+\end{equation}
+\noindent Here $\bm{v}_E$ is the three-velocity of the frame where $\bm{E}$ and $\bm{B}$ are parallel,
+
+\begin{equation}
+    \bm{v}_E = \frac{\bm{w}_E}{2 w_E^2 / c^2}\left(1 - \sqrt{1 - 4 w_E^2 / c^2}\right),
+\end{equation}
+\noindent with $\bm{w}_E / c = \bm{E}\times\bm{B} / (E^2 + B^2)$. Here we implicitly decomposed the velocity of particle into three different components:
+
+\begin{equation}
+    \bm{u} = u_\parallel \hat{\bm{B}} + \bm{v}_E \gamma + \bm{u}_{\perp g},
+\end{equation}
+\noindent where $u_{\perp g}$ is the particle velocity component responsible for its gyration. There are several assumptions we made above to simplify the equations of motion, that are worth mentioning. First of all, we neglected the curvature and $\nabla\bm{B}$ drift components of the velocity, as their contribution is unimportant in large-scale pulsar magnetospheres, where the characteristic fieldline curvature radius is $\sim R_{\rm LC}$. Also notice, that we enforce the magnetic moment of the particle to be zero in the GCA regime. This assumption has physical justification: in pulsar magnetospheres bulk of the particles essentially reside at the zeroth Landau level, radiating their perpendicular momentum via synchrotron mechanism almost instantly; setting $\mu=0$ when particle switches from the Boris algorithm to GCA is similar to that process.
+
+In order to properly capture the regions where important kinetic plasma physics occurs (such as reconnection in the current layer), while still retaining the GCA approach for the bulk of the particles in the magnetosphere, we employ simple criteria for switching between the conventional Boris and GCA. If either of the following two conditions is satisfied, particle motion is solved with the Boris algorithm:
+
+\begin{equation}
+    \begin{aligned}
+        \gamma\beta \frac{m_s c^2}{|q_s| B} &> f_B \Delta x,\\
+        \frac{E}{B} &> f_E.
+    \end{aligned}
+\end{equation}
+
+\noindent Here $f_E$ and $f_B$ are dimensionless numbers which we typically choose to be $1$ and $0.95$ correspondingly. The first condition ensures that only particles with unresolved gyroradii are reduced to their corresponding guiding centers. The second condition ensures that the GCA is not applied in the regions of vanishing magnetic field where particle gyration is ill-defined. 

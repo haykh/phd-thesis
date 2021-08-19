@@ -106,7 +106,7 @@ For a typical pulsar with the magnetic field at the light cylinder $B_0 = B_{\rm
     \gamma_{\rm rad} \approx 10^5 \left(\frac{B_0}{10^{5}~\textrm{G}}\right)^{-1/2},~~~
     \gamma_c \approx 2\cdot 10^4 \left(\frac{B_0}{10^{5}~\textrm{G}}\right)^{-1/2}.
 \end{equation}
-For the Crab, with $B_{\rm LC}\sim 4\times 10^6$ G, these values are $\gamma_{\rm rad}\approx 10^4$ and $\gamma_c\approx 3\times 10^3$~\citep{2014ApJ...780....3U}, and the typical magnetization near the light cylinder is $10^4\text{-}10^5$. We, thus, have a hierarchy of energy scales with $\gamma_c \ll \gamma_{\rm rad} \lesssim \sigma_{\rm c}$, which we will use in our simulations.
+For the Crab, with $B_{\rm LC}\sim 4\times 10^6$ G, these values are $\gamma_{\rm rad}\approx 10^4$ and $\gamma_c\approx 3\times 10^3$~\citep{2014ApJ...780....3U}, and the typical magnetization near the light cylinder is $10^4\text{-}10^5$. We, thus, have a hierarchy of energy scales with $\gamma_c < \gamma_{\rm rad} \lesssim \sigma_{\rm c}$, which we will use in our simulations.
 
 \subsection*{\small \it Two-photon pair production}
 
@@ -272,7 +272,7 @@ Magnetic reconnection in real astrophysical environments is controlled by a comb
     \begin{equation}
         p(\Delta t)=p_0\frac{\sigma_{\gamma\gamma}}{\sigma_{\rm T}},
     \end{equation}
-    where $\sigma_{\gamma\gamma}$ is the Breit-Wheeler cross section that depends on momenta and energies of the two photons, and $\sigma_{\rm T}$ is the Thomson cross section. We choose a particular value of $p_0$ to ensure the small optical thickness of the overall system, while still producing enough secondary plasma. In Appendix~\ref{sec:pairprod-appendixA} we discuss in more detail how varying this parameter affects the regime we are simulating. 
+    where $\sigma_{\gamma\gamma}$ is the Breit-Wheeler cross section that depends on momenta and energies of the two photons, and $\sigma_{\rm T}$ is the Thomson cross section. We choose a particular value of $p_0$ to ensure that the optical thickness of the overall system is small, while still producing enough secondary plasma. In Appendix~\ref{sec:pairprod-appendixA} we discuss in more detail how varying this parameter affects the regime we are simulating. 
 \end{itemize}
 
 In order to accurately sample the photon momentum space in our typical runs, we would require on average $10^3\text{-} 10^5$ photons per cell. To make this problem computationally feasible, we introduce ``weights'' for each photon and a merging routine to combine them. We use the algorithm described by \cite{2015CoPhC.191...65V} that merges all photons in the same momentum bin (and the same cell) to produce two ``heavy'' photons, while conserving energy and momentum without introducing any unnecessary momentum spread. Our momentum bins are uniform in direction and logarithmic in energy. To avoid artificial effects of binning, such as clumping of momenta in a particular direction, we change the orientations and sizes of these bins with times.

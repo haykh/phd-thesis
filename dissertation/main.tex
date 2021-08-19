@@ -2,16 +2,50 @@
 %! TEX encoding = UTF-8 Unicode
 
 \documentclass[School=Princeton]{Dissertate}
-\usepackage{amsmath,bm,multicol,xcolor,esint,enumitem,float,epigraph,tikz}
+\usepackage{amsmath,bm,multicol,xcolor,esint,enumitem,float,epigraph,tikz,contour}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage[export]{adjustbox}
 \usepackage{aasmacros}
 
+\hypersetup{
+    colorlinks,
+    citecolor=SchoolColor,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=SchoolColor,
+}
+% \hypersetup{
+%     colorlinks,
+%     citecolor=SchoolGray,
+%     filecolor=black,
+%     linkcolor=black,
+%     urlcolor=SchoolGray,
+% }
+
 \setcitestyle{aysep={}} 
 
-\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{SchoolGray}{#1}}
 \SetCommentSty{mycommfont}
-\geometry{letterpaper, left=1.5in, top=1in, bottom=1in, right=1in}
+
+\def\printversion{1}
+
+\ifx\printversion\undefined
+    \geometry{letterpaper, left=1in, top=1in, bottom=1in, right=1in}
+    \newcommand\setspacing{\doublespacing}
+\else
+    \geometry{letterpaper, left=1.5in, top=1in, bottom=1in, right=1in}
+    \newcommand\setspacing{\singlespacing}
+\fi
+
+% \def\draftversion{1}
+
+\ifx\draftversion\undefined
+    \newcommand{\EDIT}[1]{{#1}}
+\else
+    \newcommand{\EDIT}[1]{{\color{red}#1}}
+\fi
+
+\newcommand{\Vector}[1]{{\textnormal{\contour[5]{black}{$#1$}}}}
 
 \newcommand{\sidebysidecaption}[4]{%
 \RaggedRight%
@@ -54,10 +88,6 @@
 
 \newcommand{\noop}[1]{}
 
-\newcommand{\REF}{{\color{red}[REF]}}
-% \newcommand{\EDIT}[1]{{\color{red}#1}}
-\newcommand{\EDIT}[1]{{#1}}
-
 \begin{document}
 \interfootnotelinepenalty=10000
 
@@ -69,29 +99,28 @@
 \acknowledgments
 \dedicationpage
 \tableofcontents
+\vspace*{\fill} \newpage
 
-% \listoffigures
-
-\singlespacing
-
-% include each chapter...
-\setcounter{chapter}{-1}  % start chapter numbering at 0
 \pagenumbering{arabic}
+\setspacing
+
+\setcounter{chapter}{-1}
 \setcounter{page}{1}
 \include{chapters/introduction}
-%\include{chapters/chapter1}
-%% paper # 2
-%\include{chapters/chapter2}
-%% paper # 3
-%\include{chapters/chapter3}
-%% paper # 1
-%\include{chapters/chapter4}
-%\include{chapters/conclusion}
-%\begin{appendices}
-    %\include{chapters/appendix0}
-    %\include{chapters/appendixA}
-    %\include{chapters/appendixB}
-%\end{appendices}
+\include{chapters/chapter1}
+% paper # 2
+\include{chapters/chapter2}
+% paper # 3
+\include{chapters/chapter3}
+% paper # 1
+\include{chapters/chapter4}
+\include{chapters/conclusion}
+\begin{appendices}
+    \include{chapters/appendix1}
+    \include{chapters/appendix2}
+    \include{chapters/appendix3}
+    \include{chapters/appendix4}
+\end{appendices}
 
 \singlespacing
 
