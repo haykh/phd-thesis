@@ -1,3 +1,4 @@
 build/
 *.aux
 .DS_Store
+*.log

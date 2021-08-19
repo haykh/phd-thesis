@@ -67,17 +67,19 @@
 \parindent 12pt
 \RequirePackage{mathspec}
 
-\setmathsfont(Digits,Latin,Greek)[Numbers={Proportional},SizeFeatures={{Size=-8, OpticalSize=8},{Size= 8-, OpticalSize=12}},]{EB Garamond}
-\setmathrm{EB Garamond}
+\def\MainFont{EB Garamond}
+
+\setmathsfont(Digits,Latin,Greek)[Numbers={Proportional},SizeFeatures={{Size=-8, OpticalSize=8},{Size= 8-, OpticalSize=12}},]{\MainFont}
+\setmathrm{\MainFont}
 
 \widowpenalty=300
 \clubpenalty=300
 
 \defaultfontfeatures{Mapping=tex-text}
-\newfontfamily{\smallcaps}[RawFeature={+c2sc,+scmp}]{EB Garamond}
-\setromanfont[Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0]{EB Garamond}
+\newfontfamily{\smallcaps}[RawFeature={+c2sc,+scmp}]{\MainFont}
+\setromanfont[Numbers=OldStyle, Ligatures={Common, TeX}, Scale=1.0]{\MainFont}
 \setsansfont[Scale=MatchLowercase, BoldFont={Lato Bold}]{Lato Regular}
-\setmonofont[Scale=MatchLowercase]{Noto Mono} % Font substitution for Source Code Pro
+\setmonofont[Scale=MatchLowercase]{Noto Mono}
 
 								%justification={justified,RaggedRight},
 \RequirePackage[labelfont={bf,sf,footnotesize,singlespacing},
